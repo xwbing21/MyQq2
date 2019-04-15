@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">MyQq</string>
+    <string name="app_name">騰訊QQ</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="addfriend">添加好友</string>
+    <string name="addgroup">添加群組</string>
+    <string name="scan">扫一扫</string>
+    <string name="customerservice">客服</string>
+    <string name="qq_name">QQ昵称</string>
+    <string name="sign_static">这个人很帅不留个性签名</string>
 </resources>
