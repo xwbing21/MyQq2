@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.xue.myqq.view.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,8 +24,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.mipmap.header_q);
+        //替换掉原有的actionbar
         setSupportActionBar(toolbar);
-
+        CircleImageView qq_usr_icon = findViewById(R.id.qq_usr_icon);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,8 +64,9 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.toolbar_addfriend: {
-                //跳轉到添加好友的頁面
-//                new Intent(MainActivity.this);
+//                跳轉到添加好友的頁面
+                Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.toolbar_addgroup: {

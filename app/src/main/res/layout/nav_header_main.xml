@@ -13,6 +13,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <com.example.xue.myqq.view.CircleImageView
+        android:id="@+id/qq_usr_icon"
         android:layout_width="@dimen/header_image_70dp"
         android:layout_height="@dimen/header_image_70dp"
         android:src="@mipmap/header_q"
