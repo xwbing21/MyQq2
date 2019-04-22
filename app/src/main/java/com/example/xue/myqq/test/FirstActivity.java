@@ -1,4 +1,4 @@
-package com.example.xue.myqq;
+package com.example.xue.myqq.test;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.xue.myqq.R;
 
 public class FirstActivity extends AppCompatActivity {
     public static final String USERURI = "content://com.example.xue.myqq.UserContentProviderprovider/user";

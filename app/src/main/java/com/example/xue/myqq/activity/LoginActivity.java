@@ -1,4 +1,4 @@
-package com.example.xue.myqq;
+package com.example.xue.myqq.activity;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.xue.myqq.R;
 import com.example.xue.myqq.bean.UserInfo;
 import com.example.xue.myqq.util.MD5;
 
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         if (loginState) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            LoginActivity.this.finish();
         }
 
         setContentView(R.layout.activity_login);
@@ -86,6 +88,8 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         LoginActivity.this.finish();
+
+
 
 
 //                        startActivityForResult(intent,1);

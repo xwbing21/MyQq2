@@ -5,5 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
+    <ImageView
+        android:id="@+id/welcome_qq_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/qqw"
+        android:background="#00aeef"
+        />
 
 </android.support.constraint.ConstraintLayout>

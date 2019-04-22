@@ -10,4 +10,7 @@
     <dimen name="header_name_size">20sp</dimen>
     <dimen name="registe_15dp">15dp</dimen>
     <dimen name="register_10dp">10dp</dimen>
+    <dimen name="login_logo_top">35dp</dimen>
+    <dimen name="login_logo_textsize">24sp</dimen>
+    <dimen name="login_edittext_width">320dp</dimen>
 </resources>

@@ -33,7 +33,7 @@ public class UserContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        myOpenHelper = new MyOpenHelper(getContext(), DB_NAME, null, 1);
+        myOpenHelper = new MyOpenHelper(getContext(), DB_NAME, null, 2);
         db = myOpenHelper.getWritableDatabase();
         if (db == null) {
             return false;

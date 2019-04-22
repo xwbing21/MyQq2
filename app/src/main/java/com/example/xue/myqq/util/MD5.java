@@ -1,4 +1,4 @@
-package com.example.ts.safetyguard.util;
+package com.example.xue.myqq.util;
 
 
 import java.math.BigInteger;

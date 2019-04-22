@@ -1,4 +1,4 @@
-package com.example.xue.myqq;
+package com.example.xue.myqq.activity;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.xue.myqq.R;
 import com.example.xue.myqq.bean.UserInfo;
 import com.example.xue.myqq.util.MD5;
 import com.example.xue.myqq.util.UserUtil;

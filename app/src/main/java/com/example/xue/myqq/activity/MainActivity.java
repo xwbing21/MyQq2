@@ -1,10 +1,13 @@
-package com.example.xue.myqq;
+package com.example.xue.myqq.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,30 +16,115 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.xue.myqq.view.CircleImageView;
+import com.example.xue.myqq.R;
+import com.example.xue.myqq.fragment.ContactsFragment;
+import com.example.xue.myqq.fragment.MessageFragment;
+import com.example.xue.myqq.fragment.TrendsFragment;
+import com.example.xue.myqq.test.FirstActivity;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String TAG = "MainActivity";
+    private TextView mSelectMessageButton;
+    private TextView mSelectContactsButton;
+    private TextView mSelectTrendsButton;
+    private MessageFragment mMessageFragment;
+    private ContactsFragment mContactsFragment;
+    private TrendsFragment mTrendsFragment;
+    private FragmentManager mSupportFragmentManager;
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        CircleImageView qq_usr_icon = findViewById(R.id.qq_usr_icon);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.mipmap.header_q);
         //替换掉原有的actionbar
         setSupportActionBar(toolbar);
-        CircleImageView qq_usr_icon = findViewById(R.id.qq_usr_icon);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        toolbar.setNavigationIcon(R.drawable.ic_toolbar_icon);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        init();
+//        initEvent();
     }
+
+    /**
+     * 初始化view及界面
+     */
+    private void init() {
+        mSelectMessageButton = findViewById(R.id.tv_select_message_id);
+        mSelectContactsButton = findViewById(R.id.tv_select_contacts_id);
+        mSelectTrendsButton = findViewById(R.id.tv_select_trends_id);
+        mSelectMessageButton.setOnClickListener(this);
+        mSelectContactsButton.setOnClickListener(this);
+        mSelectTrendsButton.setOnClickListener(this);
+        mSupportFragmentManager = getSupportFragmentManager();
+
+        //初始化过程直接用fragment替代activity
+        FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
+        resetAll();
+        mSelectMessageButton.setSelected(true);
+        mMessageFragment = new MessageFragment();
+        transaction.replace(R.id.main_activity,mMessageFragment).commit();
+
+    }
+
+//    private void initEvent() {
+//        //使用v4的包 所以一定要注意使用v4的Fragment
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        mSelectMessageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "点击消息", Toast.LENGTH_SHORT).show();
+//                if (mMessageFragment == null) {
+//                    mMessageFragment = new MessageFragment();
+//                    transaction.add(R.id.fragment_container_id, mMessageFragment);
+//
+//                } else {
+//                    transaction.show(mMessageFragment);
+//                }
+//            }
+//        });
+//        mSelectContactsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mMessageFragment == null) {
+//                    mContactsFragment = new ContactsFragment();
+//                    fragmentTransaction.add(R.id.fragment_container_id, mContactsFragment);
+//
+//                } else {
+//                    fragmentTransaction.show(mContactsFragment);
+//                }
+//
+//            }
+//        });
+//        mSelectTrendsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mMessageFragment == null) {
+//                    mTrendsFragment = new TrendsFragment();
+//                    fragmentTransaction.add(R.id.fragment_container_id, mTrendsFragment);
+//
+//                } else {
+//                    fragmentTransaction.show(mTrendsFragment);
+//                }
+//            }
+//        });
+//
+//    }
+
 
     @Override
     public void onBackPressed() {
@@ -98,7 +186,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_exit_login_id) {
             SharedPreferences loginState = getSharedPreferences("loginState", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = loginState.edit();
-            edit.putBoolean("loginExist",false);
+            edit.putBoolean("loginExist", false);
             edit.commit();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -110,4 +198,84 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        //使用v4的包 所以一定要注意使用v4的Fragment
+        FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
+//        hideAllFragment(transaction);
+        switch (id) {
+            case R.id.tv_select_message_id: {
+                resetAll();
+                mSelectMessageButton.setSelected(true);
+                Toast.makeText(MainActivity.this, "点击消息", Toast.LENGTH_SHORT).show();
+//                if (mMessageFragment == null) {
+//                    mMessageFragment = new MessageFragment();
+//                    transaction.add(R.id.fragment_container_id, mMessageFragment);
+//
+//                } else {
+//                    transaction.show(mMessageFragment);
+//                }
+                mMessageFragment = new MessageFragment();
+                transaction.replace(R.id.main_activity,mMessageFragment);
+                break;
+            }
+            case R.id.tv_select_contacts_id: {
+                resetAll();
+                mSelectContactsButton.setSelected(true);
+                Toast.makeText(MainActivity.this, "点击2", Toast.LENGTH_SHORT).show();
+//                if (mContactsFragment == null) {
+//                    mContactsFragment = new ContactsFragment();
+//                    transaction.add(R.id.fragment_container_id, mContactsFragment);
+//
+//                } else {
+//                    transaction.show(mContactsFragment);
+//                }
+            mContactsFragment = new ContactsFragment();
+            transaction.replace(R.id.main_activity,mContactsFragment);
+                break;
+
+            }
+            case R.id.tv_select_trends_id: {
+                resetAll();
+                mSelectTrendsButton.setSelected(true);
+                Toast.makeText(MainActivity.this, "点击3", Toast.LENGTH_SHORT).show();
+//                if (mContactsFragment == null) {
+//                    mTrendsFragment = new TrendsFragment();
+//                    transaction.add(R.id.fragment_container_id, mTrendsFragment);
+//
+//                } else {
+//                    transaction.show(mTrendsFragment);
+//                }
+            mTrendsFragment = new TrendsFragment();
+            transaction.replace(R.id.main_activity,mTrendsFragment);
+                break;
+            }
+
+        }
+        transaction.commit();
+
+    }
+
+    /**
+     * 重置所有的选择为false
+     */
+    private void resetAll() {
+        mSelectMessageButton.setSelected(false);
+        mSelectContactsButton.setSelected(false);
+        mSelectTrendsButton.setSelected(false);
+    }
+//    private void  hideAllFragment(FragmentTransaction transaction){
+//        if (mMessageFragment!=null){
+//            transaction.hide(mMessageFragment);
+//        }else if (mContactsFragment!=null){
+//            transaction.hide(mContactsFragment);
+//        }else if (mTrendsFragment!=null){
+//            transaction.hide(mTrendsFragment);
+//
+//        }
+//    }
+
 }
+

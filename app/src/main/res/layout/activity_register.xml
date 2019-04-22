@@ -35,7 +35,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
             <EditText
-                android:id="@+id/et_register_name"
+                android:id="@+id/et_register_name_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_10dp"
@@ -57,7 +57,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
             <EditText
-                android:id="@+id/et_register_password"
+                android:id="@+id/et_register_password_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_10dp"
@@ -79,7 +79,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
             <EditText
-                android:id="@+id/et_register_psw_again"
+                android:id="@+id/et_register_psw_again_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_10dp"
@@ -110,18 +110,18 @@
                 android:text="性别"
                 android:textSize="18sp" />
             <RadioGroup
-                android:id="@+id/SexRadio"
+                android:id="@+id/SexRadio_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:paddingLeft="5dp">
                 <RadioButton
-                    android:id="@+id/rb_register_man"
+                    android:id="@+id/rb_register_man_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="女"/>
                 <RadioButton
-                    android:id="@+id/rb_register_woman"
+                    android:id="@+id/rb_register_woman_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="男"/>
@@ -134,7 +134,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
             <EditText
-                android:id="@+id/et_register_phone"
+                android:id="@+id/et_register_phone_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_10dp"
@@ -155,7 +155,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
             <EditText
-                android:id="@+id/et_register_address"
+                android:id="@+id/et_register_address_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_10dp"
@@ -176,13 +176,13 @@
 
             >
             <CheckBox
-                android:id="@+id/cb_register_agreement"
+                android:id="@+id/cb_register_agreement_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/header_image_10dp"
                 android:layout_marginRight="@dimen/header_image_10dp"
                 android:text="已经认真阅读相关协议"
-                android:textColor="#ffff"
+                android:textColor="#7c2020"
                 />
 
         </LinearLayout>
@@ -196,7 +196,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" >
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/bt_register_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

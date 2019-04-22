@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--登录界面,用LinearLayout-->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="@dimen/login_logo_top">
 
         <TextView
             android:id="@+id/qq"
@@ -16,31 +16,28 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="35dp"
             android:text="腾讯QQ"
-            android:textSize="24sp" />
+            android:textSize="@dimen/login_logo_textsize" />
     </LinearLayout>
-    <!--输入框-->
     <EditText
-        android:id="@+id/et_login_account"
-        android:layout_width="320dp"
+        android:id="@+id/et_login_account_id"
+        android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:hint="账号"
         android:textSize="20sp" />
-    <!--输入框-->
     <EditText
-        android:id="@+id/et_login_psw"
-        android:layout_width="320dp"
+        android:id="@+id/et_login_psw_id"
+        android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:hint="密码"
         android:inputType="textPassword"
         android:textSize="20sp" />
-    <!--按钮-->
     <Button
-        android:id="@+id/bt_login_login"
-        android:layout_width="320dp"
+        android:id="@+id/bt_login_login_id"
+        android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
@@ -54,11 +51,12 @@
         android:layout_marginTop="15dp">
 
         <TextView
-            android:id="@+id/tv_login_noregister"
+            android:id="@+id/tv_login_unregister_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
+            android:textColor="#5799da"
             android:text="新用户注册" />
 
         <!--<TextView-->

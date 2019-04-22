@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyOpenHelper extends SQLiteOpenHelper {
     private static final String DB_TABLE = "userInfo";
+    private static final String DB_TABLE2 = "friendInfo";
 
     public MyOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -24,6 +25,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE2);
         onCreate(db);
     }
 }
