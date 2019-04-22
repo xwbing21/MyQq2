@@ -25,6 +25,7 @@ import com.example.xue.myqq.fragment.ContactsFragment;
 import com.example.xue.myqq.fragment.MessageFragment;
 import com.example.xue.myqq.fragment.TrendsFragment;
 import com.example.xue.myqq.test.FirstActivity;
+import com.example.xue.myqq.view.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity
     private ContactsFragment mContactsFragment;
     private TrendsFragment mTrendsFragment;
     private FragmentManager mSupportFragmentManager;
+    private CircleImageView mUserIconImageView;
+    private String mUserAccount;
+    private NavigationView mNavigationView;
 
     @SuppressLint("ResourceType")
     @Override
@@ -52,8 +56,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         toolbar.setNavigationIcon(R.drawable.ic_toolbar_icon);
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_id);
         navigationView.setNavigationItemSelectedListener(this);
 
         init();
@@ -71,13 +74,25 @@ public class MainActivity extends AppCompatActivity
         mSelectContactsButton.setOnClickListener(this);
         mSelectTrendsButton.setOnClickListener(this);
         mSupportFragmentManager = getSupportFragmentManager();
+//        mUserIconImageView = (ImageView)findViewById(R.id.qq_usr_icon_id);
+//         mUserIconImageView = findViewById(R.id.nav_view_id).findViewById(R.id.qq_usr_icon_id);
 
+
+        //调用mNavigationView中头部的控件，一定要精确
+        mNavigationView = findViewById(R.id.nav_view_id);
+        View headerView = mNavigationView.getHeaderView(0);
+         mUserIconImageView = headerView.findViewById(R.id.qq_usr_icon_id);
         //初始化过程直接用fragment替代activity
         FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
         resetAll();
         mSelectMessageButton.setSelected(true);
         mMessageFragment = new MessageFragment();
         transaction.replace(R.id.main_activity,mMessageFragment).commit();
+
+        //获取登录账号
+//        Intent intent = getIntent();
+//        mUserAccount = intent.getStringExtra("userAccountLogin");
+        mUserIconImageView.setOnClickListener(this);
 
     }
 
@@ -252,11 +267,18 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.main_activity,mTrendsFragment);
                 break;
             }
+            case R.id.qq_usr_icon_id:{
+                Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
+                intent.putExtra("userAccountMain",mUserAccount);
+                startActivity(intent);
+                Log.d(TAG, "onClick: qq_usr_icon_id"+mUserAccount);
+            }
 
         }
         transaction.commit();
 
     }
+
 
     /**
      * 重置所有的选择为false
@@ -276,6 +298,7 @@ public class MainActivity extends AppCompatActivity
 //
 //        }
 //    }
+
 
 }
 

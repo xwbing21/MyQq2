@@ -85,7 +85,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (cursor.getCount() > 0) {
                         Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_LONG).show();
                         setLoginState();
+                        setUserAccount();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                        intent.putExtra("userAccountLogin",mUserInfo.getAccount());
                         startActivity(intent);
                         LoginActivity.this.finish();
 
@@ -95,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 //                        startActivityForResult(intent,1);
 
                     } else {
-                        Toast.makeText(LoginActivity.this, "用户名或密码不正确", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "用户名或密码不正确"+mUserInfo.getPassword(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -151,6 +153,15 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("loginState", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         edit.putBoolean("loginExist", true);
+        edit.commit();
+    }
+    /**
+     * 设置保存账号，保存在sp中
+     */
+    private void setUserAccount(){
+        SharedPreferences spAccount = getSharedPreferences("account", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = spAccount.edit();
+        edit.putString("accountId", mUserInfo.getAccount());
         edit.commit();
     }
 

@@ -17,7 +17,7 @@
 
     <!--&lt;!&ndash;导航栏  start按照不同国家习惯设定eg：我国为从左到右。必须放在主界面下面点击事件才生效-->
     <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view_id"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     public final static int RESULTCODE = 5;
     private RadioGroup mSexRadio;
     private Uri mUserInfoUri;
+    private EditText mRegisterNikenameEditText;
 
 
     @Override
@@ -60,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         mSexRadio = findViewById(R.id.SexRadio_id);
         mRegisterAgreementCheckBox = findViewById(R.id.cb_register_agreement_id);
         mRegisterButton = findViewById(R.id.bt_register_id);
+        mRegisterNikenameEditText = findViewById(R.id.et_register_nikename_id);
     }
 
     /**
@@ -77,6 +79,8 @@ public class RegisterActivity extends AppCompatActivity {
                     mRegisterPasswordEditText.setError("密码不能为空");
                 } else if (TextUtils.isEmpty(mUserInfo.getPswagain())) {
                     mRegisterPasswordAgainEditText.setError("校验密码不能为空");
+                } else if (TextUtils.isEmpty(mUserInfo.getNikename())) {
+                    mRegisterNikenameEditText.setError("昵称不能为空");
                 } else if (TextUtils.isEmpty(mUserInfo.getPhone())) {
                     mRegisterPhoneEditText.setError("手机号不能为空");
                 } else if (TextUtils.isEmpty(mUserInfo.getAddress())) {
@@ -114,6 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
         String pswagain = mRegisterPasswordAgainEditText.getText().toString().trim();
         String phone = mRegisterPhoneEditText.getText().toString().trim();
         String address = mRegisterAddressEditText.getText().toString().trim();
+        String nikename = mRegisterNikenameEditText.getText().toString().trim();
         int sex = -1;
         int checkedRadioButtonId = mSexRadio.getCheckedRadioButtonId();
         switch (checkedRadioButtonId) {
@@ -137,6 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
         mUserInfo.setPswagain(pswagain);
         mUserInfo.setPhone(phone);
         mUserInfo.setAddress(address);
+        mUserInfo.setNikename(nikename);
     }
 
     /**
@@ -160,7 +166,8 @@ public class RegisterActivity extends AppCompatActivity {
         values.put("password", password);
         values.put("phone", mUserInfo.getPhone());
         values.put("address", mUserInfo.getAddress());
-        values.put("Sex", mUserInfo.getSex());
+        values.put("sex", mUserInfo.getSex());
+        values.put("nikename", mUserInfo.getNikename());
         mContentResolver.insert(mUserInfoUri, values);
     }
 

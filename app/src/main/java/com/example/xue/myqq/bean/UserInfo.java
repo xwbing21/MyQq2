@@ -9,6 +9,15 @@ public class UserInfo {
     private int sex;
     private String phone;
     private String address;
+    private String nikename;
+
+    public String getNikename() {
+        return nikename;
+    }
+
+    public void setNikename(String nikename) {
+        this.nikename = nikename;
+    }
 
     public String getId() {
         return id;
@@ -68,14 +77,15 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "userInfo{" +
+        return "UserInfo{" +
                 "id='" + id + '\'' +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", pswagain='" + pswagain + '\'' +
-                ", sex='" + sex + '\'' +
+                ", sex=" + sex +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", nikename='" + nikename + '\'' +
                 '}';
     }
 }

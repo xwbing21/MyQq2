@@ -94,6 +94,24 @@
                 android:background="#ffffff"
                 android:textSize="18sp" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <EditText
+                android:id="@+id/et_register_nikename_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/register_10dp"
+                android:layout_marginRight="@dimen/register_10dp"
+                android:singleLine="true"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="6dp"
+                android:hint="昵称"
+                android:background="#ffffff"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -119,12 +137,12 @@
                     android:id="@+id/rb_register_man_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="女"/>
+                    android:text="男"/>
                 <RadioButton
                     android:id="@+id/rb_register_woman_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="男"/>
+                    android:text="女"/>
             </RadioGroup>
         </LinearLayout>
 

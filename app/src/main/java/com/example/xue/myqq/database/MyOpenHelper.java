@@ -18,8 +18,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE friendInfo (Id Integer PRIMARY KEY AUTOINCREMENT,nickname varchar ( 255 )," +
                 "remark varchar ( 255 ),account varchar ( 255 ),sex Integer ( 255 ),age varchar ( 255 )," +
                 "sign varchar ( 255 ) );");
-        db.execSQL("CREATE TABLE userInfo (id Integer PRIMARY KEY AUTOINCREMENT,account varchar ( 255 )," +
-                "password varchar ( 255 ),sex varchar ( 255 ),phone varchar ( 255 ),address varchar ( 255 ) );");
+        db.execSQL("CREATE TABLE userInfo (id Integer PRIMARY KEY AUTOINCREMENT, account varchar ( 255 ),password varchar ( 255 ),sex Integer ( 255 ),phone varchar ( 255 ),address varchar ( 255 ) ,nikename varchar ( 255 ));");
     }
 
     @Override

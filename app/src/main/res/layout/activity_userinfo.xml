@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.example.xue.myqq.view.CircleImageView
+    android:id="@+id/userinfo_icon_id"
+    android:layout_width="@dimen/header_image_70dp"
+    android:layout_height="@dimen/header_image_70dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="30dp"
+    android:src="@mipmap/header_q" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/userinfo_icon_id"
+        android:text="个人信息"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_userinfo_nickname_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/userinfo_icon_id"
+        android:layout_marginTop="20dp"
+        android:hint="昵称"
+        android:paddingLeft="45dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_userinfo_accout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_userinfo_nickname_id"
+        android:layout_marginTop="20dp"
+        android:hint="QQ账号"
+        android:paddingLeft="45dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_userinfo_sex_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_userinfo_accout_id"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:hint="性别"
+        android:paddingLeft="45dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_userinfo_phone_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_userinfo_sex_id"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:hint="手机号"
+        android:paddingLeft="45dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_userinfo_address_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_userinfo_phone_id"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:hint="家庭地址"
+        android:paddingLeft="45dp"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_userinfo_address_id"
+        android:layout_marginLeft="45dp"
+        android:src="@mipmap/userinfobg" />
+
+
+</RelativeLayout>
+
