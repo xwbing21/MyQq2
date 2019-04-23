@@ -1,9 +1,12 @@
 package com.example.xue.myqq.activity;
 
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -25,6 +28,7 @@ import com.example.xue.myqq.fragment.ContactsFragment;
 import com.example.xue.myqq.fragment.MessageFragment;
 import com.example.xue.myqq.fragment.TrendsFragment;
 import com.example.xue.myqq.test.FirstActivity;
+import com.example.xue.myqq.util.UserUtil;
 import com.example.xue.myqq.view.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
@@ -38,8 +42,8 @@ public class MainActivity extends AppCompatActivity
     private TrendsFragment mTrendsFragment;
     private FragmentManager mSupportFragmentManager;
     private CircleImageView mUserIconImageView;
-    private String mUserAccount;
     private NavigationView mNavigationView;
+    private TextView mNavagationNikenameTextView;
 
     @SuppressLint("ResourceType")
     @Override
@@ -74,14 +78,15 @@ public class MainActivity extends AppCompatActivity
         mSelectContactsButton.setOnClickListener(this);
         mSelectTrendsButton.setOnClickListener(this);
         mSupportFragmentManager = getSupportFragmentManager();
-//        mUserIconImageView = (ImageView)findViewById(R.id.qq_usr_icon_id);
-//         mUserIconImageView = findViewById(R.id.nav_view_id).findViewById(R.id.qq_usr_icon_id);
+
 
 
         //调用mNavigationView中头部的控件，一定要精确
         mNavigationView = findViewById(R.id.nav_view_id);
         View headerView = mNavigationView.getHeaderView(0);
          mUserIconImageView = headerView.findViewById(R.id.qq_usr_icon_id);
+        mNavagationNikenameTextView = headerView.findViewById(R.id.tv_navagation_nikename_id);
+        mNavagationNikenameTextView.setText(getNikeFromUserInfo());
         //初始化过程直接用fragment替代activity
         FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
         resetAll();
@@ -92,53 +97,11 @@ public class MainActivity extends AppCompatActivity
         //获取登录账号
 //        Intent intent = getIntent();
 //        mUserAccount = intent.getStringExtra("userAccountLogin");
+
         mUserIconImageView.setOnClickListener(this);
 
     }
 
-//    private void initEvent() {
-//        //使用v4的包 所以一定要注意使用v4的Fragment
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        mSelectMessageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "点击消息", Toast.LENGTH_SHORT).show();
-//                if (mMessageFragment == null) {
-//                    mMessageFragment = new MessageFragment();
-//                    transaction.add(R.id.fragment_container_id, mMessageFragment);
-//
-//                } else {
-//                    transaction.show(mMessageFragment);
-//                }
-//            }
-//        });
-//        mSelectContactsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mMessageFragment == null) {
-//                    mContactsFragment = new ContactsFragment();
-//                    fragmentTransaction.add(R.id.fragment_container_id, mContactsFragment);
-//
-//                } else {
-//                    fragmentTransaction.show(mContactsFragment);
-//                }
-//
-//            }
-//        });
-//        mSelectTrendsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mMessageFragment == null) {
-//                    mTrendsFragment = new TrendsFragment();
-//                    fragmentTransaction.add(R.id.fragment_container_id, mTrendsFragment);
-//
-//                } else {
-//                    fragmentTransaction.show(mTrendsFragment);
-//                }
-//            }
-//        });
-//
-//    }
 
 
     @Override
@@ -269,14 +232,33 @@ public class MainActivity extends AppCompatActivity
             }
             case R.id.qq_usr_icon_id:{
                 Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
-                intent.putExtra("userAccountMain",mUserAccount);
                 startActivity(intent);
-                Log.d(TAG, "onClick: qq_usr_icon_id"+mUserAccount);
+                break;
             }
 
         }
         transaction.commit();
 
+    }
+
+    private String getNikeFromUserInfo() {
+        ContentResolver contentResolver = getContentResolver();
+        String acountFromSP = getAcountFromSP();
+        String nikename=null;
+        Cursor cursor = contentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ?", new String[]{acountFromSP}, null);
+            if(cursor.moveToFirst()){
+                do
+                {
+                 nikename = cursor.getString(cursor.getColumnIndex("nikename"));
+                }while (cursor.moveToNext());
+
+            }
+            return nikename;
+    }
+    private String getAcountFromSP(){
+        SharedPreferences sp = getSharedPreferences("account", Context.MODE_PRIVATE);
+        String account = sp.getString("accountId", "wrong");
+        return account;
     }
 
 
@@ -288,16 +270,6 @@ public class MainActivity extends AppCompatActivity
         mSelectContactsButton.setSelected(false);
         mSelectTrendsButton.setSelected(false);
     }
-//    private void  hideAllFragment(FragmentTransaction transaction){
-//        if (mMessageFragment!=null){
-//            transaction.hide(mMessageFragment);
-//        }else if (mContactsFragment!=null){
-//            transaction.hide(mContactsFragment);
-//        }else if (mTrendsFragment!=null){
-//            transaction.hide(mTrendsFragment);
-//
-//        }
-//    }
 
 
 }

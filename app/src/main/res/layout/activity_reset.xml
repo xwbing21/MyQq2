@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_qq_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,11 +15,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="35dp"
-            android:text="腾讯QQ"
+            android:text="密码重置"
             android:textSize="@dimen/login_logo_textsize" />
     </LinearLayout>
     <EditText
-        android:id="@+id/et_login_account_id"
+        android:id="@+id/et_reset_account_id"
         android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -28,47 +27,33 @@
         android:hint="账号"
         android:textSize="20sp" />
     <EditText
-        android:id="@+id/et_login_psw_id"
+        android:id="@+id/et_reset_oldpsw_id"
         android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:hint="密码"
+        android:hint="旧密码"
         android:inputType="textPassword"
         android:textSize="20sp" />
-    <Button
-        android:id="@+id/bt_login_login_id"
+    <EditText
+        android:id="@+id/et_reset_newpsw_id"
         android:layout_width="@dimen/login_edittext_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="新密码"
+        android:inputType="textPassword"
+        android:textSize="20sp" />
+    <Button
+        android:id="@+id/bt_reset_reset_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
         android:layout_marginTop="20dp"
         android:background="#1E90FF"
-        android:text="登录"
+        android:text="重置密码"
         android:textSize="24sp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/tv_login_unregister_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:textColor="#165491"
-            android:text="新用户注册" />
-
-        <TextView
-            android:id="@+id/tv_login_resetpsw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:text="忘记密码？"
-            android:textColor="#165491"
-            />
-    </RelativeLayout>
 </LinearLayout>
 

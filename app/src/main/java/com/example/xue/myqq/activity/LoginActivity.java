@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     public final static String USERURI = "content://com.example.xue.myqq.UserContentProviderprovider/user";
     private Uri mUserUri;
     private static final String TAG = "LoginActivity";
+    private TextView mForgetPasswordTextView;
+    private TextView mResetPasswordTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +64,14 @@ public class LoginActivity extends AppCompatActivity {
         mLoginPasswordEditText = findViewById(R.id.et_login_psw_id);
         mLoginButton = findViewById(R.id.bt_login_login_id);
         mUnRegisterTextView = findViewById(R.id.tv_login_unregister_id);
-
+        mResetPasswordTextView = findViewById(R.id.tv_login_resetpsw);
     }
 
     /**
      * login界面点击事件
      */
     public void clickEvent() {
+
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +115,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+        mResetPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getEditStr();
+                Intent intent = new Intent(LoginActivity.this, ResetActivity.class);
+                intent.putExtra("accountFromLogin",mUserInfo.getAccount());
+                startActivityForResult(intent,2);
+                Log.d(TAG, "onClick: mUserInfo.getAccount="+mUserInfo.getAccount());
+            }
+        });
 
     }
 
@@ -131,6 +144,13 @@ public class LoginActivity extends AppCompatActivity {
                 mLoginAccountEditText.setText(account);
                 mLoginAccountEditText.setSelection(account.length());
                 Log.d(TAG, "onActivityResult: account" + account);
+            }
+        }else if (resultCode == 2){
+            String accountFromReset = data.getStringExtra("accountFromReset");
+            if (!TextUtils.isEmpty(accountFromReset)) {
+                mLoginAccountEditText.setText(accountFromReset);
+                mLoginAccountEditText.setSelection(accountFromReset.length());
+                Log.d(TAG, "onActivityResult: account" + accountFromReset);
             }
         }
     }

@@ -36,6 +36,9 @@
         <activity android:name=".activity.UserInfoActivity">
 
         </activity>
+        <activity android:name=".activity.ResetActivity">
+
+        </activity>
     </application>
 
 </manifest>
