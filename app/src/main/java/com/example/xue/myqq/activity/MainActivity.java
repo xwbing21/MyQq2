@@ -79,29 +79,21 @@ public class MainActivity extends AppCompatActivity
         mSelectTrendsButton.setOnClickListener(this);
         mSupportFragmentManager = getSupportFragmentManager();
 
-
-
         //调用mNavigationView中头部的控件，一定要精确
         mNavigationView = findViewById(R.id.nav_view_id);
         View headerView = mNavigationView.getHeaderView(0);
-         mUserIconImageView = headerView.findViewById(R.id.qq_usr_icon_id);
+        mUserIconImageView = headerView.findViewById(R.id.qq_usr_icon_id);
         mNavagationNikenameTextView = headerView.findViewById(R.id.tv_navagation_nikename_id);
         mNavagationNikenameTextView.setText(getNikeFromUserInfo());
+        mUserIconImageView.setOnClickListener(this);
+
         //初始化过程直接用fragment替代activity
         FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
         resetAll();
         mSelectMessageButton.setSelected(true);
         mMessageFragment = new MessageFragment();
-        transaction.replace(R.id.main_activity,mMessageFragment).commit();
-
-        //获取登录账号
-//        Intent intent = getIntent();
-//        mUserAccount = intent.getStringExtra("userAccountLogin");
-
-        mUserIconImageView.setOnClickListener(this);
-
+        transaction.replace(R.id.main_activity, mMessageFragment).commit();
     }
-
 
 
     @Override
@@ -177,41 +169,30 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * MainActivity点击事件
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         int id = v.getId();
         //使用v4的包 所以一定要注意使用v4的Fragment
         FragmentTransaction transaction = mSupportFragmentManager.beginTransaction();
-//        hideAllFragment(transaction);
         switch (id) {
             case R.id.tv_select_message_id: {
                 resetAll();
                 mSelectMessageButton.setSelected(true);
                 Toast.makeText(MainActivity.this, "点击消息", Toast.LENGTH_SHORT).show();
-//                if (mMessageFragment == null) {
-//                    mMessageFragment = new MessageFragment();
-//                    transaction.add(R.id.fragment_container_id, mMessageFragment);
-//
-//                } else {
-//                    transaction.show(mMessageFragment);
-//                }
                 mMessageFragment = new MessageFragment();
-                transaction.replace(R.id.main_activity,mMessageFragment);
+                transaction.replace(R.id.main_activity, mMessageFragment);
                 break;
             }
             case R.id.tv_select_contacts_id: {
                 resetAll();
                 mSelectContactsButton.setSelected(true);
                 Toast.makeText(MainActivity.this, "点击2", Toast.LENGTH_SHORT).show();
-//                if (mContactsFragment == null) {
-//                    mContactsFragment = new ContactsFragment();
-//                    transaction.add(R.id.fragment_container_id, mContactsFragment);
-//
-//                } else {
-//                    transaction.show(mContactsFragment);
-//                }
-            mContactsFragment = new ContactsFragment();
-            transaction.replace(R.id.main_activity,mContactsFragment);
+                mContactsFragment = new ContactsFragment();
+                transaction.replace(R.id.main_activity, mContactsFragment);
                 break;
 
             }
@@ -219,18 +200,11 @@ public class MainActivity extends AppCompatActivity
                 resetAll();
                 mSelectTrendsButton.setSelected(true);
                 Toast.makeText(MainActivity.this, "点击3", Toast.LENGTH_SHORT).show();
-//                if (mContactsFragment == null) {
-//                    mTrendsFragment = new TrendsFragment();
-//                    transaction.add(R.id.fragment_container_id, mTrendsFragment);
-//
-//                } else {
-//                    transaction.show(mTrendsFragment);
-//                }
-            mTrendsFragment = new TrendsFragment();
-            transaction.replace(R.id.main_activity,mTrendsFragment);
+                mTrendsFragment = new TrendsFragment();
+                transaction.replace(R.id.main_activity, mTrendsFragment);
                 break;
             }
-            case R.id.qq_usr_icon_id:{
+            case R.id.qq_usr_icon_id: {
                 Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
                 startActivity(intent);
                 break;
@@ -241,21 +215,29 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * 从userInfo中获取nikename
+     * @return nikename（String）
+     */
     private String getNikeFromUserInfo() {
         ContentResolver contentResolver = getContentResolver();
         String acountFromSP = getAcountFromSP();
-        String nikename=null;
+        String nikename = null;
         Cursor cursor = contentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ?", new String[]{acountFromSP}, null);
-            if(cursor.moveToFirst()){
-                do
-                {
-                 nikename = cursor.getString(cursor.getColumnIndex("nikename"));
-                }while (cursor.moveToNext());
+        if (cursor.moveToFirst()) {
+            do {
+                nikename = cursor.getString(cursor.getColumnIndex("nikename"));
+            } while (cursor.moveToNext());
 
-            }
-            return nikename;
+        }
+        return nikename;
     }
-    private String getAcountFromSP(){
+
+    /**
+     * 从sp中获取当前account
+     * @return 当前account（String）
+     */
+    private String getAcountFromSP() {
         SharedPreferences sp = getSharedPreferences("account", Context.MODE_PRIVATE);
         String account = sp.getString("accountId", "wrong");
         return account;
@@ -263,7 +245,7 @@ public class MainActivity extends AppCompatActivity
 
 
     /**
-     * 重置所有的选择为false
+     * 重置所有的选择为false（底部菜单栏）
      */
     private void resetAll() {
         mSelectMessageButton.setSelected(false);

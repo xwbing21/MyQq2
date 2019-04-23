@@ -32,13 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     public final static String USERURI = "content://com.example.xue.myqq.UserContentProviderprovider/user";
     private Uri mUserUri;
     private static final String TAG = "LoginActivity";
-    private TextView mForgetPasswordTextView;
     private TextView mResetPasswordTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //设置在加载布局之前
+        //设置在加载布局之前,如果loginExist为true，就直接跳转主页面
         SharedPreferences sp = getSharedPreferences("loginState", Context.MODE_PRIVATE);
         boolean loginState = sp.getBoolean("loginExist", false);
         if (loginState) {
@@ -90,17 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                         setLoginState();
                         setUserAccount();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        intent.putExtra("userAccountLogin",mUserInfo.getAccount());
                         startActivity(intent);
                         LoginActivity.this.finish();
-
-
-
-
-//                        startActivityForResult(intent,1);
-
                     } else {
-                        Toast.makeText(LoginActivity.this, "用户名或密码不正确"+mUserInfo.getPassword(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "用户名或密码不正确" + mUserInfo.getPassword(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -120,9 +112,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getEditStr();
                 Intent intent = new Intent(LoginActivity.this, ResetActivity.class);
-                intent.putExtra("accountFromLogin",mUserInfo.getAccount());
-                startActivityForResult(intent,2);
-                Log.d(TAG, "onClick: mUserInfo.getAccount="+mUserInfo.getAccount());
+                intent.putExtra("accountFromLogin", mUserInfo.getAccount());
+                startActivityForResult(intent, 2);
+                Log.d(TAG, "onClick: mUserInfo.getAccount=" + mUserInfo.getAccount());
             }
         });
 
@@ -145,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 mLoginAccountEditText.setSelection(account.length());
                 Log.d(TAG, "onActivityResult: account" + account);
             }
-        }else if (resultCode == 2){
+        } else if (resultCode == 2) {
             String accountFromReset = data.getStringExtra("accountFromReset");
             if (!TextUtils.isEmpty(accountFromReset)) {
                 mLoginAccountEditText.setText(accountFromReset);
@@ -175,10 +167,11 @@ public class LoginActivity extends AppCompatActivity {
         edit.putBoolean("loginExist", true);
         edit.commit();
     }
+
     /**
      * 设置保存账号，保存在sp中
      */
-    private void setUserAccount(){
+    private void setUserAccount() {
         SharedPreferences spAccount = getSharedPreferences("account", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = spAccount.edit();
         edit.putString("accountId", mUserInfo.getAccount());

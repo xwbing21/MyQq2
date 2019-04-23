@@ -29,12 +29,6 @@ public class UserInfoActivity extends AppCompatActivity {
     private String mNikename;
 
 
-//    @Override
-//    protected void onCreate( Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +37,10 @@ public class UserInfoActivity extends AppCompatActivity {
         init();
         initEvent();
     }
+
+    /**
+     * 初始化控件
+     */
     public void init() {
         mUserInfoAccountTextView = findViewById(R.id.tv_userinfo_accout_id);
         mUserInfoSexTextView = findViewById(R.id.tv_userinfo_sex_id);
@@ -55,6 +53,9 @@ public class UserInfoActivity extends AppCompatActivity {
 //        mUserAccountMain = intent.getStringExtra("userAccountMain");
     }
 
+    /**
+     * 初始化控件内容
+     */
     public void initEvent() {
         mUserAccountMain = getAccountFromSP();
         Cursor cursor = mContentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ?", new String[]{mUserAccountMain}, null);
@@ -70,22 +71,27 @@ public class UserInfoActivity extends AppCompatActivity {
             }
         }
 
-        switch (mSex){
-            case "0":{
+        switch (mSex) {
+            case "0": {
                 mUserInfoSexTextView.setText("性别: 男");
-            break;
+                break;
             }
-            case "1":{
+            case "1": {
                 mUserInfoSexTextView.setText("性别: 女");
                 break;
             }
         }
-        mUserInfoNikenameTextView.setText("昵称: "+mNikename);
-        mUserInfoAccountTextView.setText("账号: "+mUserAccountMain);
-        mUserInfoPhoneTextView.setText("手机号: "+mPhone);
-        mUserInfoAddressTextView.setText("家庭地址: "+mAddress);
+        mUserInfoNikenameTextView.setText(mNikename);
+        mUserInfoAccountTextView.setText("QQ: " + mUserAccountMain);
+        mUserInfoPhoneTextView.setText("手机号: " + mPhone);
+        mUserInfoAddressTextView.setText("家庭地址: " + mAddress);
     }
-    private String getAccountFromSP(){
+
+    /**
+     * 获得当前account
+     * @return 当前account
+     */
+    private String getAccountFromSP() {
         SharedPreferences sp = getSharedPreferences("account", Context.MODE_PRIVATE);
         String account = sp.getString("accountId", "wrong");
         return account;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+
+        <com.example.xue.myqq.view.CircleImageView
+            android:id="@+id/iv_fragment_item_icon_id"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/header_q"
+            />
+        <TextView
+            android:id="@+id/iv_fragment_item_nikename_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QQnikename"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_fragment_item_icon_id"
+            />
+
+        <TextView
+            android:id="@+id/iv_fragment_item_message_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/iv_fragment_item_icon_id"
+            android:layout_below="@+id/iv_fragment_item_nikename_id"
+            android:text="聊天呢"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#8a8a8a"
+            />
+
+
+
+
+</RelativeLayout>

@@ -37,6 +37,10 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset);
+        init();
+    }
+
+    private void init() {
         mResetAccountEditText = findViewById(R.id.et_reset_account_id);
         mResetOldpswEditText = findViewById(R.id.et_reset_oldpsw_id);
         mResetNewpswEditText = findViewById(R.id.et_reset_newpsw_id);
@@ -50,7 +54,10 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
+    /**
+     * ResetActivity的点击事件
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         mLastAccount = null;
@@ -62,6 +69,7 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         }
         mOldPasword = mResetOldpswEditText.getText().toString().trim();
         mNewPassword = mResetNewpswEditText.getText().toString().trim();
+
         mContentResolver = getContentResolver();
         ContentValues values = new ContentValues();
         if (v.getId() == R.id.bt_reset_reset_id) {
@@ -94,6 +102,10 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         return cursor.getCount() != 0;
     }
 
+    /**
+     * 判断旧密码是否正确
+     * @return 是否正确
+     */
     private boolean isCorrectPassword() {
 
         Cursor cursor = mContentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ? and password=? ", new String[]{mLastAccount, MD5.getMD5(mOldPasword) }, null);
