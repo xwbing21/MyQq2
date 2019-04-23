@@ -1,5 +1,6 @@
 package com.example.xue.myqq.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,9 +26,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.xue.myqq.R;
+import com.example.xue.myqq.base.App;
 import com.example.xue.myqq.fragment.ContactsFragment;
 import com.example.xue.myqq.fragment.MessageFragment;
 import com.example.xue.myqq.fragment.TrendsFragment;
+import com.example.xue.myqq.permission.PermissionUtils;
+import com.example.xue.myqq.permission.request.IRequestPermissions;
+import com.example.xue.myqq.permission.request.RequestPermissions;
+import com.example.xue.myqq.permission.result.IRequestPermissionsResult;
+import com.example.xue.myqq.permission.result.RequestPermissionsResultSetApp;
 import com.example.xue.myqq.test.FirstActivity;
 import com.example.xue.myqq.util.UserUtil;
 import com.example.xue.myqq.view.CircleImageView;
@@ -44,11 +52,29 @@ public class MainActivity extends AppCompatActivity
     private CircleImageView mUserIconImageView;
     private NavigationView mNavigationView;
     private TextView mNavagationNikenameTextView;
+    // 权限相关
+    private String[] permissions = {
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.WRITE_CONTACTS,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.SEND_SMS};
+    private IRequestPermissions requestPermissions = RequestPermissions.getInstance();
+    private IRequestPermissionsResult requestPermissionsResult = RequestPermissionsResultSetApp.getInstance();
+
+    private void initBefore() {
+        boolean flag = requestPermissions.requestPermissions(this, permissions, PermissionUtils.ResultCode1);
+        // 不给权限直接挂
+        // if (!flag) {
+        //     finish();
+        // }
+    }
 
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 给我权限 谢谢
+        initBefore();
         setContentView(R.layout.activity_main);
 //        CircleImageView qq_usr_icon = findViewById(R.id.qq_usr_icon);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -65,6 +91,21 @@ public class MainActivity extends AppCompatActivity
 
         init();
 //        initEvent();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        // super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 用户给APP授权的结果
+        // 判断grantResults是否已全部授权，如果是，执行相应操作，如果否，提醒开启权限
+        if (requestPermissionsResult.doRequestPermissionsResult(this, permissions, grantResults)) {
+            // 请求的权限全部授权成功，此处可以做自己想做的事了
+            // 输出授权结果
+            // Toast.makeText(App.getInstance(), "授权成功，请重新点击刚才的操作！", Toast.LENGTH_LONG).show();
+        } else {
+            // 输出授权结果
+            Toast.makeText(this, "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
+        }
     }
 
     /**

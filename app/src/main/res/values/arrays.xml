@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="contact_tab_titles">
+        <item>好友</item>
+        <item>通讯录</item>
+    </string-array>
+</resources>

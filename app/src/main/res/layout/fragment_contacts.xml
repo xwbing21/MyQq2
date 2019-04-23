@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:id="@+id/fragment_contacts_id"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="我是联系人界面"
-    android:textSize="50dp"
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ContactsFragment">
+    
+    <!-- TODO 这里有个Bug 在Fragment中使用CoordinatorLayout失效 -->
+    <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <!-- 这里AppBarLayout来包裹滑动之后要执行效果的布局文件 -->
+        <!-- 暂时先放着.. -->
+        <ImageView
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:background="@mipmap/bg_contact_top"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="导航栏的背景图"/>
+        
+        <android.support.design.widget.TabLayout
+                android:id="@+id/tab_contact"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/color_contact_tab_bg"
+                app:tabBackground="@color/color_contact_tab_bg"
+                app:tabMaxWidth="0dp"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/colorAccent"
+                app:tabIndicatorHeight="1dp"/>
+        <!--
+        android:layout_height="?attr/actionBarSize"
+        标签较少 这样不能均分
+        app:tabGravity="fill"
+        app:tabMode="scrollable"
+         -->
+    
+    </android.support.design.widget.AppBarLayout>
+    
+    <android.support.v4.view.ViewPager
+            android:id="@+id/vp_contact"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    />
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

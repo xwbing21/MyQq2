@@ -3,4 +3,5 @@
     <color name="colorPrimary">#00aeef</color>
     <color name="colorPrimaryDark">#048bbe</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="color_contact_tab_bg">#FFFFFF</color>
 </resources>

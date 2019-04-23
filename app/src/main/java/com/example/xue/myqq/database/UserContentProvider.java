@@ -26,8 +26,8 @@ public class UserContentProvider extends ContentProvider {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(UserUtil.AUTHORITY, "user", USER_DIR);
         uriMatcher.addURI(UserUtil.AUTHORITY, "user/#", USER_ITEM);
-        uriMatcher.addURI(UserUtil.AUTHORITY, "friend", USER_DIR);
-        uriMatcher.addURI(UserUtil.AUTHORITY, "friend/#", USER_ITEM);
+        uriMatcher.addURI(UserUtil.AUTHORITY, "friend", FRIEND_DIR);
+        uriMatcher.addURI(UserUtil.AUTHORITY, "friend/#", FRIEND_ITEM);
     }
 
 
@@ -106,7 +106,7 @@ public class UserContentProvider extends ContentProvider {
             case FRIEND_DIR:
             case FRIEND_ITEM: {
                 long id = db.insert(DB_TABLE2, null, values);//nullColumnHack： 当values参数为空或者里面没有内容的时候，我们insert是会失败的（底层数据库不允许插入一个空行），为了防止这种情况，我们要在这里指定一个 列名，到时候如果发现将要插入的行为空行时，就会将你指定的这个列名的值设为null，然后再向数据库中插入。
-                uriReturn = Uri.parse("Content://com.example.xue.myqq.provider/User/" + id);
+                uriReturn = Uri.parse("Content://com.example.xue.myqq.provider/Friend/" + id);
                 break;
             }
             default: {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="2dp">
+    
+    <com.example.xue.myqq.view.CircleImageView
+            android:id="@+id/iv_portrait_rv_item_contact"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/default_portrait"/>
+    
+    <!-- TODO 要删除姓名和号码 -->
+    <TextView
+            android:id="@+id/tv_name_rv_item_contact"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_toEndOf="@+id/iv_portrait_rv_item_contact"
+            android:layout_toRightOf="@+id/iv_portrait_rv_item_contact"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="姓名"
+            android:textSize="22sp"
+            android:textColor="#000"
+            android:gravity="center_vertical"/>
+    
+    <TextView
+            android:id="@+id/tv_phone_rv_item_contact"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/tv_name_rv_item_contact"
+            android:layout_toEndOf="@+id/iv_portrait_rv_item_contact"
+            android:layout_toRightOf="@+id/iv_portrait_rv_item_contact"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="13822334455"
+            android:textColor="#000"
+            android:gravity="center_vertical"/>
+
+</RelativeLayout>

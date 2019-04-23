@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    
+    <ImageView
+            android:id="@+id/iv_expanded_friend_group"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_expanded_friend_group"/>
+    
+    <TextView
+            android:id="@+id/tv_friend_group_title"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="这个字不用的.."
+            android:textSize="25sp"
+            android:textColor="#03081A"/>
+
+</LinearLayout>
