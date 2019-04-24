@@ -100,17 +100,17 @@ public class ContactUtils {
                                 phoneNum = data;
                                 break;
                             // 如果是email
-                            case "vnd.android.cursor.item/email_v2":
-
-                                break;
-                            // 如果是地址
-                            case "vnd.android.cursor.item/postal-address_v2":
-
-                                break;
-                            // 如果是组织
-                            case "vnd.android.cursor.item/organization":
-
-                                break;
+                            // case "vnd.android.cursor.item/email_v2":
+                            //
+                            //     break;
+                            // // 如果是地址
+                            // case "vnd.android.cursor.item/postal-address_v2":
+                            //
+                            //     break;
+                            // // 如果是组织
+                            // case "vnd.android.cursor.item/organization":
+                            //
+                            //     break;
                             default:
                                 break;
                         }
