@@ -3,5 +3,6 @@
     <string-array name="contact_tab_titles">
         <item>好友</item>
         <item>通讯录</item>
+        <item>公众号</item>
     </string-array>
 </resources>

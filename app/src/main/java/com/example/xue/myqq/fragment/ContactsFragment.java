@@ -79,6 +79,9 @@ public class ContactsFragment extends BaseFragment {
                 case 1:
                     fragment = new PhoneContactFragment();
                     break;
+                case 2:
+                    fragment = new OfficialFragment();
+                    break;
                 default:
                     break;
             }
