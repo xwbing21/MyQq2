@@ -6,19 +6,13 @@
         android:layout_height="match_parent"
         tools:context=".fragment.PhoneContactFragment">
     
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_phone_contact"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_phone_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                tools:ignore="RtlSymmetry"/>
-    
-    </android.support.v4.widget.NestedScrollView>
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            tools:ignore="RtlSymmetry"/>
     
     <com.example.xue.myqq.view.sidebar.HintIndexSidebar
             android:id="@+id/his_contact_search"
