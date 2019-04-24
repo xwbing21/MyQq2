@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import butterknife.BindView;
+
 import com.example.xue.myqq.R;
 import com.example.xue.myqq.adapter.ChatListViewAdapter;
 import com.example.xue.myqq.base.App;
@@ -22,6 +22,8 @@ import com.example.xue.myqq.bean.FriendInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 public class ChattingActivity extends BaseActivity {
 
@@ -38,6 +40,7 @@ public class ChattingActivity extends BaseActivity {
 
     private Handler handler;
     private ChatListViewAdapter adapter;
+    private FriendInfo mFriendInfo;
 
     @Override
     protected int getContentLayoutId() {
@@ -48,20 +51,27 @@ public class ChattingActivity extends BaseActivity {
     protected void initData() {
         Intent intent = getIntent();
         // 聊天对象消息
-        FriendInfo friendInfo = intent.getParcelableExtra("friendInfo");
+        mFriendInfo = intent.getParcelableExtra("friendInfo");
         mToPortrait = BitmapFactory.decodeResource(getResources(), R.mipmap.to_default_portrait);
         mChatList = new ArrayList<>();
         handler = new MyHandler(this);
 
-        Bitmap friendPortrait = friendInfo.getPortrait();
-        for (int i = 0; i < 3; i++) {
-            ChatInfo chat = new ChatInfo()
-                    .setNickname(friendInfo.getNickname())
-                    .setMeSend(false)
-                    .setChatMessage("Hello World!")
-                    .setPortrait(friendPortrait);
-            mChatList.add(chat);
+        if (mFriendInfo != null){
+            Bitmap friendPortrait = mFriendInfo.getPortrait();
+            for (int i = 0; i < 3; i++) {
+                ChatInfo chat = new ChatInfo()
+                        .setNickname(mFriendInfo.getNickname())
+                        .setMeSend(false)
+                        .setChatMessage("Hello World!")
+                        .setPortrait(friendPortrait);
+                mChatList.add(chat);
+            }
+        }else {
+            int position = intent.getIntExtra("position", 0);
+            List<ChatInfo> chatInfos = App.msgList.get(position);
+            mChatList=chatInfos;
         }
+
         adapter = new ChatListViewAdapter(this, mChatList);
         mChatDialogListView.setAdapter(adapter);
         initEvent();
@@ -87,8 +97,11 @@ public class ChattingActivity extends BaseActivity {
                     mChatMessageEditText.setText("");
                     adapter.notifyDataSetChanged();
                     handler.sendEmptyMessage(1);
-                    // 把消息加进App全局变量
-                    App.msgList.add(mChatList);
+                    if (mFriendInfo!=null){
+                        // 把消息加进App全局变量
+                        App.msgList.add(mChatList);
+                    }
+
                 }
             }
         });
@@ -97,6 +110,7 @@ public class ChattingActivity extends BaseActivity {
     static class MyHandler extends Handler {
 
         WeakReference<ChattingActivity> reference;
+
         private MyHandler(ChattingActivity chattingActivity) {
             reference = new WeakReference<>(chattingActivity);
         }
