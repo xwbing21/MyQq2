@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.xue.myqq.R;
-import com.example.xue.myqq.base.App;
 import com.example.xue.myqq.fragment.ContactsFragment;
 import com.example.xue.myqq.fragment.MessageFragment;
 import com.example.xue.myqq.fragment.TrendsFragment;
@@ -156,9 +155,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         switch (id) {
@@ -181,20 +178,10 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // 执行导航栏点击事件
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_exit_login_id) {
+        if (id == R.id.nav_exit_login_id) {
             SharedPreferences loginState = getSharedPreferences("loginState", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = loginState.edit();
             edit.putBoolean("loginExist", false);
@@ -212,6 +199,7 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * MainActivity点击事件
+     *
      * @param v
      */
     @Override
@@ -223,7 +211,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.tv_select_message_id: {
                 resetAll();
                 mSelectMessageButton.setSelected(true);
-                Toast.makeText(MainActivity.this, "点击消息", Toast.LENGTH_SHORT).show();
                 mMessageFragment = new MessageFragment();
                 transaction.replace(R.id.main_activity, mMessageFragment);
                 break;
@@ -231,7 +218,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.tv_select_contacts_id: {
                 resetAll();
                 mSelectContactsButton.setSelected(true);
-                Toast.makeText(MainActivity.this, "点击2", Toast.LENGTH_SHORT).show();
                 mContactsFragment = new ContactsFragment();
                 transaction.replace(R.id.main_activity, mContactsFragment);
                 break;
@@ -240,7 +226,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.tv_select_trends_id: {
                 resetAll();
                 mSelectTrendsButton.setSelected(true);
-                Toast.makeText(MainActivity.this, "点击3", Toast.LENGTH_SHORT).show();
                 mTrendsFragment = new TrendsFragment();
                 transaction.replace(R.id.main_activity, mTrendsFragment);
                 break;
@@ -258,6 +243,7 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * 从userInfo中获取nikename
+     *
      * @return nikename（String）
      */
     private String getNikeFromUserInfo() {
@@ -276,6 +262,7 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * 从sp中获取当前account
+     *
      * @return 当前account（String）
      */
     private String getAcountFromSP() {

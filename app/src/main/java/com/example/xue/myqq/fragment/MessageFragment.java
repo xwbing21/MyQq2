@@ -38,6 +38,7 @@ public class MessageFragment extends Fragment {
         mListViewCount = -1;
         if (App.msgList.size()<=0){
             mListViewCount =0;
+
         }else {
             mListViewCount=App.msgList.size();
         }
@@ -53,22 +54,6 @@ public class MessageFragment extends Fragment {
                 startActivity(intent);
             }
         });
-//        mMessageListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                App.msgList.remove(position);
-//                myAdapter.notifyDataSetChanged();
-//                return false;
-//            }
-//        });
-
-//        mList = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            Map<String, String> map=new HashMap<String, String>();
-//            map.put("nikename", "nikename"+i);
-//            map.put("message", "message" + i);
-//            mList.add(map);
-//        }
 
         return view;
     }
