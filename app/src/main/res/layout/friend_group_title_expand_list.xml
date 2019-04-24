@@ -19,7 +19,7 @@
             android:layout_marginLeft="5dp"
             android:gravity="center_vertical"
             android:text="这个字不用的.."
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:textColor="#03081A"/>
 
 </LinearLayout>

@@ -164,7 +164,8 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.toolbar_addfriend: {
 //                跳轉到添加好友的頁面
-                Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+//                 Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddFriendActivity.class);
                 startActivity(intent);
                 break;
             }

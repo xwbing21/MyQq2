@@ -32,7 +32,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
      * @param db SQLiteDatabase
      */
     private void initFriendInfo(SQLiteDatabase db) {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 30; i++) {
             int random = (int) (Math.random() * 10);
             if (random % 2 == 0) {
                 db.execSQL("INSERT INTO friendInfo (nickname, remark, account, sex, age, sign) " +

@@ -12,7 +12,7 @@
     <string name="qq_name">QQ昵称</string>
     <string name="sign_static">这个人很帅不留个性签名</string>
     <string name="register_adress">家庭地址:</string>
-
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

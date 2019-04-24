@@ -85,34 +85,34 @@ public class FriendFragment extends BaseFragment {
 
         List<FriendInfo> list1 = new ArrayList<>();
         FriendExpandInfo expandInfo1 = new FriendExpandInfo()
-                .setTitle("第一组")
+                .setTitle("枯藤老树昏鸦")
                 .setFriendList(list1);
         List<FriendInfo> list2 = new ArrayList<>();
         FriendExpandInfo expandInfo2 = new FriendExpandInfo()
-                .setTitle("第二组")
+                .setTitle("学校不让回家")
                 .setFriendList(list2);
         List<FriendInfo> list3 = new ArrayList<>();
         FriendExpandInfo expandInfo3 = new FriendExpandInfo()
-                .setTitle("第三组")
+                .setTitle("突击裸考不挂")
                 .setFriendList(list3);
         List<FriendInfo> list4 = new ArrayList<>();
         FriendExpandInfo expandInfo4 = new FriendExpandInfo()
-                .setTitle("第四组")
+                .setTitle("简直在说梦话")
                 .setFriendList(list4);
         List<FriendInfo> list5 = new ArrayList<>();
         FriendExpandInfo expandInfo5 = new FriendExpandInfo()
-                .setTitle("第五组")
+                .setTitle("分数日渐日下")
                 .setFriendList(list5);
 
         int i = 0;
         for (FriendInfo friendInfo : mFriendInfoList) {
-            if (i < 20) {
+            if (i < 10) {
                 list1.add(friendInfo);
-            } else if (20 < i && i < 40) {
+            } else if (10 < i && i < 15) {
                 list2.add(friendInfo);
-            } else if (40 < i && i < 60) {
+            } else if (15 < i && i < 20) {
                 list3.add(friendInfo);
-            } else if (60 < i && i < 80) {
+            } else if (20 < i && i < 25) {
                 list4.add(friendInfo);
             } else {
                 list5.add(friendInfo);
@@ -125,15 +125,11 @@ public class FriendFragment extends BaseFragment {
         mExpandList.add(expandInfo3);
         mExpandList.add(expandInfo4);
         mExpandList.add(expandInfo5);
-        mExpandList.add(new FriendExpandInfo().setTitle("第六组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第七组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第八组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第九组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第十组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第十一组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第十二组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第13组").setFriendList(new ArrayList<FriendInfo>()));
-        mExpandList.add(new FriendExpandInfo().setTitle("第14组").setFriendList(new ArrayList<FriendInfo>()));
+        mExpandList.add(new FriendExpandInfo().setTitle("挂科人在天涯").setFriendList(new ArrayList<FriendInfo>()));
+        mExpandList.add(new FriendExpandInfo().setTitle("————————").setFriendList(new ArrayList<FriendInfo>()));
+        mExpandList.add(new FriendExpandInfo().setTitle("┏┳┳┳┓").setFriendList(new ArrayList<FriendInfo>()));
+        mExpandList.add(new FriendExpandInfo().setTitle("┃﹃　﹃┃").setFriendList(new ArrayList<FriendInfo>()));
+        mExpandList.add(new FriendExpandInfo().setTitle("┗┳ロ┳┛").setFriendList(new ArrayList<FriendInfo>()));
     }
 
     /**
@@ -158,8 +154,8 @@ public class FriendFragment extends BaseFragment {
                 String sex = cursor.getString(4);
                 String age = cursor.getString(5);
                 String sign = cursor.getString(6);
-                LogUtils.d(TAG, "id" + id + " nicknameTextView" + nickname + " remark" + remark
-                        + " account" + account + " sex" + sex + " age" + age + " sign" + sign);
+                // LogUtils.d(TAG, "id" + id + " nickname" + nickname + " remark" + remark
+                //         + " account" + account + " sex" + sex + " age" + age + " sign" + sign);
                 friendInfo.setId(id)
                         .setNickname(nickname)
                         .setRemark(remark)

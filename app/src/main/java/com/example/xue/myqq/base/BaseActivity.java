@@ -81,7 +81,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onSupportNavigateUp() {
         // 当点击界面导航返回时，Finish当前界面
