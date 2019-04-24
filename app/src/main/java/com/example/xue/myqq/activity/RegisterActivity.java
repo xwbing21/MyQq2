@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mRegisterPasswordEditText.setError("密码不能为空");
                 } else if (TextUtils.isEmpty(mUserInfo.getPswagain())) {
                     mRegisterPasswordAgainEditText.setError("校验密码不能为空");
-                } else if (TextUtils.isEmpty(mUserInfo.getNikename())) {
+                } else if (TextUtils.isEmpty(mUserInfo.getNickname())) {
                     mRegisterNikenameEditText.setError("昵称不能为空");
                 } else if (TextUtils.isEmpty(mUserInfo.getPhone())) {
                     mRegisterPhoneEditText.setError("手机号不能为空");
@@ -142,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
         mUserInfo.setPswagain(pswagain);
         mUserInfo.setPhone(phone);
         mUserInfo.setAddress(address);
-        mUserInfo.setNikename(nikename);
+        mUserInfo.setNickname(nikename);
     }
 
     /**
@@ -167,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
         values.put("phone", mUserInfo.getPhone());
         values.put("address", mUserInfo.getAddress());
         values.put("sex", mUserInfo.getSex());
-        values.put("nikename", mUserInfo.getNikename());
+        values.put("nikename", mUserInfo.getNickname());
         mContentResolver.insert(mUserInfoUri, values);
     }
 

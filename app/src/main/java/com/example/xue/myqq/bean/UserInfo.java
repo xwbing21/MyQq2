@@ -9,14 +9,14 @@ public class UserInfo {
     private int sex;
     private String phone;
     private String address;
-    private String nikename;
+    private String nickname;
 
-    public String getNikename() {
-        return nikename;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNikename(String nikename) {
-        this.nikename = nikename;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getId() {
@@ -85,7 +85,7 @@ public class UserInfo {
                 ", sex=" + sex +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", nikename='" + nikename + '\'' +
+                ", nickname='" + nickname + '\'' +
                 '}';
     }
 }

@@ -6,12 +6,11 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
-import butterknife.BindView;
+
 import com.example.xue.myqq.R;
 import com.example.xue.myqq.activity.ChattingActivity;
 import com.example.xue.myqq.adapter.MyExpandListViewAdapter;
@@ -24,6 +23,8 @@ import com.example.xue.myqq.view.MyExpandableListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 显示QQ好友列表
@@ -157,7 +158,7 @@ public class FriendFragment extends BaseFragment {
                 String sex = cursor.getString(4);
                 String age = cursor.getString(5);
                 String sign = cursor.getString(6);
-                LogUtils.d(TAG, "id" + id + " nickname" + nickname + " remark" + remark
+                LogUtils.d(TAG, "id" + id + " nicknameTextView" + nickname + " remark" + remark
                         + " account" + account + " sex" + sex + " age" + age + " sign" + sign);
                 friendInfo.setId(id)
                         .setNickname(nickname)
