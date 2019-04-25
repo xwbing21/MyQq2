@@ -92,6 +92,8 @@ public class PhoneContactFragment extends BaseFragment implements IndexSidebar.O
                     // 消失
                     mOpenContactBTN.setVisibility(View.GONE);
                     mPB.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(App.getInstance(), "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
                 }
             }
         });
