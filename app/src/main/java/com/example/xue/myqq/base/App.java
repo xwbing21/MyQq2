@@ -2,6 +2,7 @@ package com.example.xue.myqq.base;
 
 import android.app.Application;
 import com.example.xue.myqq.bean.ChatInfo;
+import com.example.xue.myqq.bean.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ public class App extends Application {
      * 存放聊天信息的全局变量
      */
     public static List<List<ChatInfo>> msgList = new ArrayList<>();
+    public static boolean isOpenContact = false;
+    public static List<Contact> contactList = null;
     private static Application instance;
 
     @Override

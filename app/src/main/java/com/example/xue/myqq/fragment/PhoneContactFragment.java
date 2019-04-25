@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import butterknife.BindView;
 import com.example.xue.myqq.R;
@@ -36,6 +38,11 @@ import java.util.List;
 public class PhoneContactFragment extends BaseFragment implements IndexSidebar.OnChooseLetterChangedListener {
     private static final String TAG = "PhoneContactFragment";
 
+    @BindView(R.id.btn_open_contact_phone_contact)
+    public Button mOpenContactBTN;
+    @BindView(R.id.pb_phone_contact)
+    public ProgressBar mPB;
+
     @BindView(R.id.rv_phone_contact)
     public RecyclerView mContactRV;
     @BindView(R.id.his_contact_search)
@@ -54,16 +61,41 @@ public class PhoneContactFragment extends BaseFragment implements IndexSidebar.O
     }
 
     @Override
-    protected void initData() {
+    protected void onFirstInit() {
         mContactUtils = new ContactUtils(App.getInstance());
         mContactList = new ArrayList<>();
-        indexSidebar.setOnChooseLetterChangedListener(this);
+        indexSidebar.setOnChooseLetterChangedListener(PhoneContactFragment.this);
         // RecyclerView常规操作
         mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mContactRV.setLayoutManager(mLayoutManager);
-        // 设置适配器
-        mAdapter = new ContactAdapter(App.getInstance(), mContactList);
+    }
 
+    @Override
+    protected void initData() {
+
+        if (App.contactList != null) {
+            mOpenContactBTN.setVisibility(View.GONE);
+            mContactList = App.contactList;
+            // 设置适配器
+            initContactRV();
+        }
+
+        mOpenContactBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPB.setVisibility(View.VISIBLE);
+                App.isOpenContact = true;
+                // 设置适配器
+                initContactRV();
+                // 消失
+                mOpenContactBTN.setVisibility(View.GONE);
+                mPB.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void initContactRV() {
+        mAdapter = new ContactAdapter(App.getInstance(), mContactList);
         mAdapter.setOnItemClickListener(new ContactAdapter.MyItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
@@ -73,7 +105,9 @@ public class PhoneContactFragment extends BaseFragment implements IndexSidebar.O
             }
         });
         getContactData();
+        App.contactList = mContactList;
         mContactRV.setAdapter(mAdapter);
+        indexSidebar.setVisibility(View.VISIBLE);
     }
 
     private static String[] items = {"打电话", "发短信"};
