@@ -46,9 +46,10 @@ public class MessageFragment extends Fragment {
         mMessageList =App.msgList;
         Log.d(TAG, "onCreateView: mMessageList start"+mMessageList.size());
 
-        Log.d(TAG, "onCreateView:mListViewCount "+mListViewCount);
         myAdapter = new myAdapter(getActivity(), mChatInfoList);
         mMessageListView.setAdapter(myAdapter);
+
+        //点击事件
         mMessageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -58,6 +59,8 @@ public class MessageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //长点击事件
         mMessageListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {

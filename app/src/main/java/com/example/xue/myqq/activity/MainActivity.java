@@ -34,7 +34,6 @@ import com.example.xue.myqq.permission.request.IRequestPermissions;
 import com.example.xue.myqq.permission.request.RequestPermissions;
 import com.example.xue.myqq.permission.result.IRequestPermissionsResult;
 import com.example.xue.myqq.permission.result.RequestPermissionsResultSetApp;
-import com.example.xue.myqq.test.FirstActivity;
 import com.example.xue.myqq.util.UserUtil;
 import com.example.xue.myqq.view.CircleImageView;
 
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity
         // 给我权限 谢谢
         initBefore();
         setContentView(R.layout.activity_main);
-//        CircleImageView qq_usr_icon = findViewById(R.id.qq_usr_icon);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //替换掉原有的actionbar
         setSupportActionBar(toolbar);
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         init();
-//        initEvent();
     }
 
     @Override

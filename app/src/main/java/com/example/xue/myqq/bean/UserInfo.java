@@ -1,5 +1,8 @@
 package com.example.xue.myqq.bean;
 
+/**
+ * 登录的用户的基本信息
+ */
 public class UserInfo {
 
     private String id;

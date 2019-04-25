@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- 同级的item有几个则在toolbar右边显示几个 -->
-    <!--
-        id:之后设置点击事件的时候找到当前菜单项的唯一标识
-        title:必填项，Toolbar栏的menu标题
-        [如果存在icon，则显示icon图标，不显示文字]
-        [如果不存在icon,则显示文字]
-        app:showAsAction = "ifRoom" ：显示为一个行为
-        android:showAsAction="ifRoom":icon失效显示图标为“3个竖立的点”
-    -->
+
     <!--    1.always：总是显示在界面上
     2.never：不显示在界面上，只让出现在右边的三个点中
     3.ifRoom：如果有位置才显示，不然就出现在右边的三个点中-->
