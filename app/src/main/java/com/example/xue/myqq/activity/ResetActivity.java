@@ -39,7 +39,7 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_reset);
         init();
     }
-
+    //初始化
     private void init() {
         mResetAccountEditText = findViewById(R.id.et_reset_account_id);
         mResetOldpswEditText = findViewById(R.id.et_reset_oldpsw_id);
@@ -49,13 +49,14 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
         mAccountFromLogin = intent.getStringExtra("accountFromLogin");
         Log.d(TAG, "onCreate: mAccountFromLogin" + mAccountFromLogin);
-        if (mAccountFromLogin!=null){
+        if (mAccountFromLogin != null) {
             mResetAccountEditText.setText(mAccountFromLogin);
         }
     }
 
     /**
      * ResetActivity的点击事件
+     *
      * @param v
      */
     @Override
@@ -75,7 +76,13 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
         if (v.getId() == R.id.bt_reset_reset_id) {
             String md5Password = MD5.getMD5(mNewPassword);
             values.put("password", md5Password);
-            if (!isExistAccount()) {
+            if (TextUtils.isEmpty(mLastAccount)) {
+                mResetAccountEditText.setError("账号不能为空");
+            } else if (TextUtils.isEmpty(mOldPasword)) {
+                mResetOldpswEditText.setError("旧密码不能为空");
+            } else if (TextUtils.isEmpty(mNewPassword)) {
+                mResetNewpswEditText.setError("新密码不能为空");
+            } else if (!isExistAccount()) {
                 Toast.makeText(ResetActivity.this, "账号不存在", Toast.LENGTH_SHORT).show();
             } else if (!isCorrectPassword()) {
                 Toast.makeText(ResetActivity.this, "旧密码不正确", Toast.LENGTH_SHORT).show();
@@ -104,11 +111,12 @@ public class ResetActivity extends AppCompatActivity implements View.OnClickList
 
     /**
      * 判断旧密码是否正确
+     *
      * @return 是否正确
      */
     private boolean isCorrectPassword() {
 
-        Cursor cursor = mContentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ? and password=? ", new String[]{mLastAccount, MD5.getMD5(mOldPasword) }, null);
+        Cursor cursor = mContentResolver.query(Uri.parse(UserUtil.USERURI), null, "account = ? and password=? ", new String[]{mLastAccount, MD5.getMD5(mOldPasword)}, null);
         return cursor.getCount() != 0;
     }
 }
