@@ -52,7 +52,7 @@ public class ChattingActivity extends BaseActivity {
         Intent intent = getIntent();
         // 聊天对象消息
         mFriendInfo = intent.getParcelableExtra("friendInfo");
-        mToPortrait = BitmapFactory.decodeResource(getResources(), R.mipmap.to_default_portrait);
+        mToPortrait = BitmapFactory.decodeResource(getResources(), R.mipmap.header_q);
         mChatList = new ArrayList<>();
         handler = new MyHandler(this);
 

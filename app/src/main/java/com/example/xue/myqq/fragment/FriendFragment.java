@@ -143,7 +143,7 @@ public class FriendFragment extends BaseFragment {
         Cursor cursor = resolver.query(uri, null, null, null);
         if (cursor != null) {
             FriendInfo friendInfo;
-            Bitmap portrait = BitmapFactory.decodeResource(getResources(), R.mipmap.default_portrait);
+            Bitmap portrait = BitmapFactory.decodeResource(getResources(), R.mipmap.default_portrait2);
             while (cursor.moveToNext()) {
                 LogUtils.d(TAG, cursor.getString(1));
                 friendInfo = new FriendInfo();

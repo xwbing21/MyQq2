@@ -10,7 +10,7 @@
             android:id="@+id/iv_fragment_item_icon_id"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/header_q"
+            android:src="@mipmap/default_portrait2"
             />
         <TextView
             android:id="@+id/iv_fragment_item_nikename_id"
