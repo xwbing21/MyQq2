@@ -83,13 +83,18 @@ public class PhoneContactFragment extends BaseFragment implements IndexSidebar.O
         mOpenContactBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPB.setVisibility(View.VISIBLE);
-                App.isOpenContact = true;
-                // 设置适配器
-                initContactRV();
-                // 消失
-                mOpenContactBTN.setVisibility(View.GONE);
-                mPB.setVisibility(View.GONE);
+                if (ActivityCompat.checkSelfPermission(App.getInstance(),
+                        Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+                    mPB.setVisibility(View.VISIBLE);
+                    App.isOpenContact = true;
+                    // 设置适配器
+                    initContactRV();
+                    // 消失
+                    mOpenContactBTN.setVisibility(View.GONE);
+                    mPB.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(App.getInstance(), "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
