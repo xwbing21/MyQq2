@@ -29,6 +29,7 @@
             android:id="@+id/iv_fragment_item_message_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:layout_marginLeft="19dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/iv_fragment_item_icon_id"
