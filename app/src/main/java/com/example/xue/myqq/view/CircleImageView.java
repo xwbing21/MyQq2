@@ -25,7 +25,7 @@ public class CircleImageView extends AppCompatImageView {
     }
 
     public CircleImageView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, 0) ;
     }
 
     public CircleImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

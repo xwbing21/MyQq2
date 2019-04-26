@@ -57,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:textColor="#165491"
+            android:textColor="#0364c6"
+            android:textSize="15sp"
             android:text="新用户注册" />
 
         <TextView
@@ -66,8 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
-            android:text="忘记密码？"
-            android:textColor="#165491"
+            android:text="密码重置？"
+            android:textSize="15sp"
+            android:textColor="#0364c6"
             />
     </RelativeLayout>
 </LinearLayout>
