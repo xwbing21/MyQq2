@@ -34,7 +34,7 @@ public class MessageFragment extends Fragment {
     private List<Map<String, String>> mList;
     private List<ChatInfo> mChatInfoList;
     private int mListViewCount;
-    private MessageFragment.myAdapter myAdapter;
+    public MessageFragment.myAdapter myAdapter;
     private List<List<ChatInfo>> mMessageList;
 
     @Override
