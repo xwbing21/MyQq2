@@ -24,5 +24,5 @@ public class GalleryViewPager extends ViewPager {
             e.printStackTrace();
             return false;
         }
-    }
+    }//
 }

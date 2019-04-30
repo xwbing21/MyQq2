@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity
     private TextView mNavagationNikenameTextView;
     // 权限相关
     private String[] permissions = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS,
             Manifest.permission.CALL_PHONE,
