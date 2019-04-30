@@ -39,4 +39,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     // pinyin4j
     implementation 'com.belerweb:pinyin4j:2.5.1'
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }

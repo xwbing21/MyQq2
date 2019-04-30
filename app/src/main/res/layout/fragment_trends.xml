@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ContactsFragment"
+    android:orientation="vertical"
+    android:background="@color/azure">
 
-    <TextView
-        android:id="@+id/fragment_trends_id"
-        android:layout_width="wrap_content"
+    <ImageView
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@mipmap/bg_contact_top"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="导航栏的背景图"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是动态界面"
-        android:textSize="50dp"
-        />
+        android:layout_marginTop="4dp">
+        <TableRow
+            android:background="@color/lavender"
+            android:padding="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@mipmap/icon_trends" />
+            <Button
+                android:id="@+id/button_trends_space_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:text="@string/space" />
+        </TableRow>
+        <TableRow
+            android:background="@color/lavender"
+            android:padding="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@color/lavender"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@mipmap/icon_trends" />
+            <Button
+                android:id="@+id/button_trends_gallery_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:text="@string/gallery" />
+        </TableRow>
+        <TableRow
+            android:background="@color/lavender"
+            android:paddingTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@mipmap/icon_trends" />
+            <Button
+                android:id="@+id/button_trends_battery_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:text="@string/battery" />
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>

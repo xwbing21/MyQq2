@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#048bbe</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_contact_tab_bg">#FFFFFF</color>
+    <color name="azure">#F0FFFF</color>
+    <color name="lavender">#E6E6FA</color>
+    <color name="lightSteelBlue">#B0C4DE</color>
+    <color name="auqamarin">#7FFFAA</color>
 </resources>

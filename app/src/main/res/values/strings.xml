@@ -15,4 +15,18 @@
     
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="reply">评论</string>
+    <string name="Gallery">图片集</string>
+
+    <string name="battery_capacity">剩余电量 : </string>
+    <string name="battery_status">电池状态 : </string>
+    <string name="remaining_battery">剩余电量(百分比) : </string>
+    <string name="current_now">瞬时电流 : </string>
+    <string name="battery_temperature">电池温度 : </string>
+    <string name="battery_voltage">电压 : </string>
+    <string name="battery_total_energy">电池出厂容量 : </string>
+    <string name="space">动态</string>
+    <string name="gallery">图片集</string>
+    <string name="battery">电池信息</string>
 </resources>
